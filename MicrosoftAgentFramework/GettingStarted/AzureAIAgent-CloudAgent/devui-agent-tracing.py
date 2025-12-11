@@ -2,7 +2,7 @@
 import os
 from dotenv import load_dotenv
 from agent_framework import ChatAgent
-from agent_framework.azure import AzureAIAgentClient
+from agent_framework.azure import AzureAIClient
 from azure.identity.aio import AzureCliCredential
 from agent_framework.devui import serve
 import asyncio
@@ -13,7 +13,7 @@ async def create_docs_agent(project_endpoint: str, model: str) -> ChatAgent:
     credential = AzureCliCredential()
     
     # Initialize the Azure AI Agent Client
-    chat_client = AzureAIAgentClient(async_credential=credential,
+    chat_client = AzureAIClient(credential=credential,
                                      project_endpoint=project_endpoint,
                                      model_deployment_name=model)
 
